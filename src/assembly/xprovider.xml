@@ -10,6 +10,7 @@
         <fileSet>
             <directory>${project.build.outputDirectory}</directory>
             <includes>
+                <include>ricciliao/x/cache/CacheKey.class</include>
                 <include>ricciliao/x/cache/XCacheConstants.class</include>
                 <include>ricciliao/x/cache/ConsumerData.class</include>
                 <include>ricciliao/x/cache/ConsumerIdentifier.class</include>

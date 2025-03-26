@@ -1,11 +1,11 @@
 package ricciliao.x.cache;
 
+import jakarta.annotation.Nonnull;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.ResolvableType;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
-import org.springframework.lang.NonNull;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -30,7 +30,7 @@ public class ConsumerCacheRestService<T extends CacheDto> {
         this.identifier = identifier;
         this.restTemplate = restTemplate;
         this.typeReference = new ParameterizedTypeReference<>() {
-            @NonNull
+            @Nonnull
             @Override
             public Type getType() {
 
