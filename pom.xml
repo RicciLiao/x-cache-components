@@ -8,14 +8,16 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>cache-consumer-components</artifactId>
+    <groupId>ricciliao.x</groupId>
+    <artifactId>cache-components</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>x-cache-consumer-components</name>
+    <name>x-cache-components</name>
     <description>Cache Consumer Components</description>
 
     <properties>
-        <assembly-consumer-jar.finalName>cache-consumer-components-${project.version}</assembly-consumer-jar.finalName>
+        <assembly-consumer-jar.finalName>cache-consumer-${project.version}</assembly-consumer-jar.finalName>
+        <assembly-provider-jar.finalName>cache-provider-${project.version}</assembly-provider-jar.finalName>
     </properties>
 
     <dependencies>
@@ -42,6 +44,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -67,23 +70,35 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>make-assembly</id>
+                        <id>consumer-assembly</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
+                        <configuration>
+                            <finalName>${assembly-consumer-jar.finalName}</finalName>
+                            <descriptors>
+                                <descriptor>src/assembly/consumer/common.xml</descriptor>
+                                <descriptor>src/assembly/consumer/message.xml</descriptor>
+                                <descriptor>src/assembly/consumer/bsm.xml</descriptor>
+                                <descriptor>src/assembly/starter.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>provider-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <finalName>${assembly-provider-jar.finalName}</finalName>
+                            <descriptors>
+                                <descriptor>src/assembly/provider.xml</descriptor>
+                            </descriptors>
+                        </configuration>
                     </execution>
                 </executions>
-                <configuration>
-                    <finalName>${assembly-consumer-jar.finalName}</finalName>
-                    <descriptors>
-                        <descriptor>src/assembly/xconsumer.xml</descriptor>
-                        <descriptor>src/assembly/message.xml</descriptor>
-                        <descriptor>src/assembly/bsm.xml</descriptor>
-                        <descriptor>src/assembly/xstarter.xml</descriptor>
-                        <descriptor>src/assembly/xprovider.xml</descriptor>
-                    </descriptors>
-                </configuration>
             </plugin>
         </plugins>
     </build>

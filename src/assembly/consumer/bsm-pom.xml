@@ -8,11 +8,11 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>cache-provider-components-message</artifactId>
+    <artifactId>cache-consumer-bsm</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>cache-provider-components-message</name>
-    <description>Components of ricci-cache-provider</description>
+    <name>cache-consumer-bsm</name>
+    <description>Components of ricci-bsm-svc</description>
 
     <properties>
 
@@ -20,8 +20,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>ricciliao.x</groupId>
-            <artifactId>cache-consumer-components</artifactId>
+            <groupId>ricciliao</groupId>
+            <artifactId>cache-consumer-common</artifactId>
             <scope>compile</scope>
         </dependency>
     </dependencies>

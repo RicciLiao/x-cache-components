@@ -1,0 +1,37 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.2.0 https://maven.apache.org/xsd/assembly-2.2.0.xsd">
+    <id>common</id>
+    <formats>
+        <format>jar</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <fileSets>
+        <fileSet>
+            <directory>${project.build.outputDirectory}</directory>
+            <includes>
+                <include>ricciliao/x/cache/CacheKey.class</include>
+                <include>ricciliao/x/cache/ConsumerData.class</include>
+                <include>ricciliao/x/cache/ConsumerIdentifier.class</include>
+                <include>ricciliao/x/cache/XCacheConstants.class</include>
+
+                <include>ricciliao/x/cache/ConsumerCacheRestService.class</include>
+
+                <include>ricciliao/x/cache/ConsumerCacheProperties.class</include>
+                <include>ricciliao/x/cache/ConsumerCacheProperties$OperationProperties.class</include>
+                <include>
+                    ricciliao/x/cache/ConsumerCacheProperties$OperationProperties$CacheRestPathProperties.class
+                </include>
+
+                <include>ricciliao/x/cache/pojo/CacheDto.class</include>
+                <include>ricciliao/x/cache/pojo/CacheExtraOperationDto.class</include>
+                <include>ricciliao/x/cache/pojo/ConsumerIdentifierDto.class</include>
+                <include>ricciliao/x/cache/pojo/ConsumerOpDto.class</include>
+                <include>ricciliao/x/cache/pojo/ConsumerOpDto$Batch.class</include>
+                <include>ricciliao/x/cache/pojo/ConsumerOpDto$Single.class</include>
+                <include>ricciliao/x/cache/pojo/ProviderInfoDto.class</include>
+            </includes>
+            <outputDirectory>/</outputDirectory>
+        </fileSet>
+    </fileSets>
+</assembly>

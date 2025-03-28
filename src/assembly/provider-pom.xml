@@ -8,10 +8,10 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>cache-xprovider</artifactId>
+    <artifactId>cache-provider</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>cache-xprovider</name>
+    <name>cache-provider</name>
     <description>Components of ricci-cache-provider</description>
 
     <properties>

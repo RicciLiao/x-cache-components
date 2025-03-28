@@ -8,11 +8,11 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>cache-provider-components</artifactId>
+    <artifactId>cache-consumer-starter</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>cache-provider-components</name>
-    <description>Components of ricci-cache-provider</description>
+    <name>cache-consumer-starter</name>
+    <description>Components of component-starter</description>
 
     <properties>
 
