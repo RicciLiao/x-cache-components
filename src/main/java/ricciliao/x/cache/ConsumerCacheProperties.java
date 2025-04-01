@@ -34,12 +34,21 @@ public class ConsumerCacheProperties extends ApplicationProperties {
 
         private String store;
         private Class<? extends CacheDto> storeClassName;
-        private CacheRestPathProperties create = new CacheRestPathProperties("http://ricci-cache-provider:8083/operation", HttpMethod.POST);
-        private CacheRestPathProperties update = new CacheRestPathProperties("http://ricci-cache-provider:8083/operation", HttpMethod.PUT);
-        private CacheRestPathProperties delete = new CacheRestPathProperties("http://ricci-cache-provider:8083/operation/{id}", HttpMethod.DELETE);
-        private CacheRestPathProperties retrieve = new CacheRestPathProperties("http://ricci-cache-provider:8083/operation/{id}", HttpMethod.GET);
-        private CacheRestPathProperties batchCreate = new CacheRestPathProperties("http://ricci-cache-provider:8083/operation/batch", HttpMethod.POST);
-        private CacheRestPathProperties providerInfo = new CacheRestPathProperties("http://ricci-cache-provider:8083/operation/extra/providerInfo", HttpMethod.GET);
+        private CacheRestPathProperties create = new CacheRestPathProperties(XCacheConstants.DEFAULT_PROVIDER_OPERATION_PATH, HttpMethod.POST);
+        private CacheRestPathProperties update = new CacheRestPathProperties(XCacheConstants.DEFAULT_PROVIDER_OPERATION_PATH, HttpMethod.PUT);
+        private CacheRestPathProperties delete = new CacheRestPathProperties(XCacheConstants.DEFAULT_PROVIDER_OPERATION_PATH + "/{id}", HttpMethod.DELETE);
+        private CacheRestPathProperties get = new CacheRestPathProperties(XCacheConstants.DEFAULT_PROVIDER_OPERATION_PATH + "/{id}", HttpMethod.GET);
+        private CacheRestPathProperties list = new CacheRestPathProperties(XCacheConstants.DEFAULT_PROVIDER_OPERATION_PATH, HttpMethod.GET);
+        private CacheRestPathProperties batchCreate = new CacheRestPathProperties(XCacheConstants.DEFAULT_PROVIDER_OPERATION_PATH + "/batch", HttpMethod.POST);
+        private CacheRestPathProperties providerInfo = new CacheRestPathProperties(XCacheConstants.DEFAULT_PROVIDER_OPERATION_PATH + "/extra/providerInfo", HttpMethod.GET);
+
+        public CacheRestPathProperties getList() {
+            return list;
+        }
+
+        public void setList(CacheRestPathProperties list) {
+            this.list = list;
+        }
 
         public CacheRestPathProperties getProviderInfo() {
             return providerInfo;
@@ -97,12 +106,12 @@ public class ConsumerCacheProperties extends ApplicationProperties {
             this.delete = delete;
         }
 
-        public CacheRestPathProperties getRetrieve() {
-            return retrieve;
+        public CacheRestPathProperties getGet() {
+            return get;
         }
 
-        public void setRetrieve(CacheRestPathProperties retrieve) {
-            this.retrieve = retrieve;
+        public void setGet(CacheRestPathProperties get) {
+            this.get = get;
         }
 
         public static class CacheRestPathProperties extends RestPathProperties {

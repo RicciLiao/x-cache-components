@@ -1,9 +1,11 @@
 package ricciliao.x.cache.pojo;
 
-import java.io.Serial;
-import java.io.Serializable;
+import org.springframework.util.MultiValueMap;
+import ricciliao.x.component.rest.RestQueryParam;
 
-public class CacheExtraOperationDto implements Serializable {
+import java.io.Serial;
+
+public class CacheExtraOperationDto implements RestQueryParam {
     @Serial
     private static final long serialVersionUID = -8084916424068282111L;
 

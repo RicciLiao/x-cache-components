@@ -8,6 +8,7 @@
         <version>1.0.0</version>
     </parent>
 
+    <groupId>ricciliao.x</groupId>
     <artifactId>cache-provider</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>

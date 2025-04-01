@@ -16,6 +16,8 @@
                 <include>ricciliao/x/cache/XCacheConstants.class</include>
 
                 <include>ricciliao/x/cache/ConsumerCacheRestService.class</include>
+                <include>ricciliao/x/cache/ConsumerCacheRestService$1.class</include>
+                <include>ricciliao/x/cache/ConsumerCacheRestService$ResponseDataTypeReference.class</include>
 
                 <include>ricciliao/x/cache/ConsumerCacheProperties.class</include>
                 <include>ricciliao/x/cache/ConsumerCacheProperties$OperationProperties.class</include>
