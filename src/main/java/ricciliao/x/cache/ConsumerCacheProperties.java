@@ -33,13 +33,13 @@ public class ConsumerCacheProperties extends ApplicationProperties {
     public static class OperationProperties {
 
         private String store;
-        private Class<? extends CacheDto> storeClassName;
+        private Class<CacheDto> storeClassName;
         private CacheRestPathProperties create = new CacheRestPathProperties(XCacheConstants.DEFAULT_PROVIDER_OPERATION_PATH, HttpMethod.POST);
         private CacheRestPathProperties update = new CacheRestPathProperties(XCacheConstants.DEFAULT_PROVIDER_OPERATION_PATH, HttpMethod.PUT);
         private CacheRestPathProperties delete = new CacheRestPathProperties(XCacheConstants.DEFAULT_PROVIDER_OPERATION_PATH + "/{id}", HttpMethod.DELETE);
         private CacheRestPathProperties get = new CacheRestPathProperties(XCacheConstants.DEFAULT_PROVIDER_OPERATION_PATH + "/{id}", HttpMethod.GET);
-        private CacheRestPathProperties list = new CacheRestPathProperties(XCacheConstants.DEFAULT_PROVIDER_OPERATION_PATH, HttpMethod.GET);
         private CacheRestPathProperties batchCreate = new CacheRestPathProperties(XCacheConstants.DEFAULT_PROVIDER_OPERATION_PATH + "/batch", HttpMethod.POST);
+        private CacheRestPathProperties list = new CacheRestPathProperties(XCacheConstants.DEFAULT_PROVIDER_OPERATION_PATH + "/list", HttpMethod.POST);
         private CacheRestPathProperties providerInfo = new CacheRestPathProperties(XCacheConstants.DEFAULT_PROVIDER_OPERATION_PATH + "/extra/providerInfo", HttpMethod.GET);
 
         public CacheRestPathProperties getList() {
@@ -74,11 +74,11 @@ public class ConsumerCacheProperties extends ApplicationProperties {
             this.store = store;
         }
 
-        public Class<? extends CacheDto> getStoreClassName() {
+        public Class<CacheDto> getStoreClassName() {
             return storeClassName;
         }
 
-        public void setStoreClassName(Class<? extends CacheDto> storeClassName) {
+        public void setStoreClassName(Class<CacheDto> storeClassName) {
             this.storeClassName = storeClassName;
         }
 

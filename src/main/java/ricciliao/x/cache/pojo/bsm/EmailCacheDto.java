@@ -72,7 +72,7 @@ public class EmailCacheDto extends CacheDto implements Serializable {
     }
 
     @Override
-    public EmailCacheDto buildCacheKey() {
+    public EmailCacheDto generateCacheKey() {
 
         return this;
     }

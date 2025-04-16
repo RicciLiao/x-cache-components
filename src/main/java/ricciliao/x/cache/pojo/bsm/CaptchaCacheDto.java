@@ -44,7 +44,7 @@ public class CaptchaCacheDto extends CacheDto implements Serializable {
     }
 
     @Override
-    public CaptchaCacheDto buildCacheKey() {
+    public CaptchaCacheDto generateCacheKey() {
 
         return this;
     }

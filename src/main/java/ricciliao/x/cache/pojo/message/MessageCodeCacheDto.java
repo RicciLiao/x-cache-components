@@ -59,7 +59,7 @@ public class MessageCodeCacheDto extends CacheDto {
     }
 
     @Override
-    public MessageCodeCacheDto buildCacheKey() {
+    public MessageCodeCacheDto generateCacheKey() {
         this.setCacheKey(
                 String.format(
                         "%s_%s",

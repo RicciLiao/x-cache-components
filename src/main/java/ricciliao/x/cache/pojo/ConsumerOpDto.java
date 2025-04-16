@@ -86,6 +86,7 @@ public class ConsumerOpDto implements Serializable, ResponseData {
         public int hashCode() {
             return Objects.hash(super.hashCode(), getData());
         }
+
     }
 
     public static class Single<T extends CacheDto> extends ConsumerOpDto {
@@ -130,5 +131,6 @@ public class ConsumerOpDto implements Serializable, ResponseData {
         public int hashCode() {
             return Objects.hash(super.hashCode(), getData());
         }
+
     }
 }

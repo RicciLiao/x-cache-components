@@ -10,8 +10,8 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 import ricciliao.x.cache.pojo.CacheDto;
-import ricciliao.x.cache.pojo.CacheExtraOperationDto;
 import ricciliao.x.cache.pojo.ConsumerIdentifierDto;
+import ricciliao.x.cache.pojo.ConsumerOpBatchQueryDto;
 import ricciliao.x.cache.pojo.ConsumerOpDto;
 import ricciliao.x.cache.pojo.ProviderInfoDto;
 import ricciliao.x.component.response.ResponseData;
@@ -134,7 +134,7 @@ public class ConsumerCacheRestService<T extends CacheDto> {
         ResponseEntity<ResponseVo<ResponseSimpleData.Bool>> response =
                 restTemplate.exchange(
                         RequestEntity
-                                .method(props.getCreate().toHttpMethod(), uriComponentsBuilder.build().encode().toUri())
+                                .method(props.getBatchCreate().toHttpMethod(), uriComponentsBuilder.build().encode().toUri())
                                 .header(XCacheConstants.HTTP_HEADER_FOR_CACHE_STORE, identifier.getStore())
                                 .header(XCacheConstants.HTTP_HEADER_FOR_CACHE_CUSTOMER, identifier.getConsumer())
                                 .body(operation),
@@ -151,13 +151,13 @@ public class ConsumerCacheRestService<T extends CacheDto> {
         return null;
     }
 
-    public ConsumerOpDto.Batch<T> list(CacheExtraOperationDto operation) throws IllegalAccessException {
+    public ConsumerOpDto.Batch<T> list(ConsumerOpBatchQueryDto operation) {
         UriComponentsBuilder uriComponentsBuilder = props.getList().toBuilder();
         uriComponentsBuilder.queryParams(operation.toQueryParams());
         ResponseEntity<ResponseVo<ConsumerOpDto.Batch<T>>> response =
                 restTemplate.exchange(
                         RequestEntity
-                                .method(props.getGet().toHttpMethod(), uriComponentsBuilder.build().encode().toUri())
+                                .method(props.getList().toHttpMethod(), uriComponentsBuilder.build().encode().toUri())
                                 .header(XCacheConstants.HTTP_HEADER_FOR_CACHE_STORE, identifier.getStore())
                                 .header(XCacheConstants.HTTP_HEADER_FOR_CACHE_CUSTOMER, identifier.getConsumer())
                                 .build(),

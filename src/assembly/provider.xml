@@ -14,6 +14,14 @@
                 <include>ricciliao/x/cache/XCacheConstants.class</include>
                 <include>ricciliao/x/cache/ConsumerData.class</include>
                 <include>ricciliao/x/cache/ConsumerIdentifier.class</include>
+                <include>ricciliao/x/cache/CacheQuery.class</include>
+                <include>ricciliao/x/cache/CacheQuery$Property.class</include>
+                <include>ricciliao/x/cache/CacheQuery$Sort.class</include>
+                <include>ricciliao/x/cache/CacheQuery$Support.class</include>
+                <include>ricciliao/x/cache/CacheQuery$Sort$Direction.class</include>
+                <include>ricciliao/x/cache/ProviderCacheProperties.class</include>
+                <include>ricciliao/x/cache/ProviderCacheProperties$StoreProperties.class</include>
+                <include>ricciliao/x/cache/ProviderCacheProperties$AdditionalProperties.class</include>
 
                 <include>ricciliao/x/cache/pojo/*.class</include>
                 <include>ricciliao/x/cache/pojo/bsm/*.class</include>
