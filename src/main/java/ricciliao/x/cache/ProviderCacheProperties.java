@@ -3,11 +3,26 @@ package ricciliao.x.cache;
 import ricciliao.x.cache.pojo.CacheDto;
 
 import java.time.Duration;
+import java.util.List;
 
 public class ProviderCacheProperties {
 
     private ProviderCacheProperties() {
 
+    }
+
+    public abstract static class ConsumerProperties {
+        private String consumer;
+
+        public String getConsumer() {
+            return consumer;
+        }
+
+        public void setConsumer(String consumer) {
+            this.consumer = consumer;
+        }
+
+        public abstract List<? extends StoreProperties> getStoreList();
     }
 
     public abstract static class StoreProperties {

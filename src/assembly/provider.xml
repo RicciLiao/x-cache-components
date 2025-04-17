@@ -22,6 +22,7 @@
                 <include>ricciliao/x/cache/ProviderCacheProperties.class</include>
                 <include>ricciliao/x/cache/ProviderCacheProperties$StoreProperties.class</include>
                 <include>ricciliao/x/cache/ProviderCacheProperties$AdditionalProperties.class</include>
+                <include>ricciliao/x/cache/ProviderCacheProperties$ConsumerProperties.class</include>
 
                 <include>ricciliao/x/cache/pojo/*.class</include>
                 <include>ricciliao/x/cache/pojo/bsm/*.class</include>
