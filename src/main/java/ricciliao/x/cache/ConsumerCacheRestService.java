@@ -153,14 +153,13 @@ public class ConsumerCacheRestService<T extends CacheDto> {
 
     public ConsumerOpDto.Batch<T> list(ConsumerOpBatchQueryDto operation) {
         UriComponentsBuilder uriComponentsBuilder = props.getList().toBuilder();
-        uriComponentsBuilder.queryParams(operation.toQueryParams());
         ResponseEntity<ResponseVo<ConsumerOpDto.Batch<T>>> response =
                 restTemplate.exchange(
                         RequestEntity
                                 .method(props.getList().toHttpMethod(), uriComponentsBuilder.build().encode().toUri())
                                 .header(XCacheConstants.HTTP_HEADER_FOR_CACHE_STORE, identifier.getStore())
                                 .header(XCacheConstants.HTTP_HEADER_FOR_CACHE_CUSTOMER, identifier.getConsumer())
-                                .build(),
+                                .body(operation),
                         new ResponseDataTypeReference<>(ConsumerOpDto.Batch.class, storeClassName)
 
                 );
