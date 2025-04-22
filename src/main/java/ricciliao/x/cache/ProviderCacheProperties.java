@@ -11,7 +11,7 @@ public class ProviderCacheProperties {
 
     }
 
-    public abstract static class ConsumerProperties {
+    public abstract static class ConsumerProperties<T extends StoreProperties> {
         private String consumer;
 
         public String getConsumer() {
@@ -22,7 +22,7 @@ public class ProviderCacheProperties {
             this.consumer = consumer;
         }
 
-        public abstract List<? extends StoreProperties> getStoreList();
+        public abstract List<T> getStoreList();
     }
 
     public abstract static class StoreProperties {

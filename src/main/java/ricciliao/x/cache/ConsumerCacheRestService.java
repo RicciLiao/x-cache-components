@@ -151,7 +151,29 @@ public class ConsumerCacheRestService<T extends CacheDto> {
         return null;
     }
 
-    public ConsumerOpDto.Batch<T> list(ConsumerOpBatchQueryDto operation) {
+    public ResponseSimpleData.Bool batchDelete(ConsumerOpBatchQueryDto query) throws RestClientException {
+        UriComponentsBuilder uriComponentsBuilder = props.getBatchDelete().toBuilder();
+        ResponseEntity<ResponseVo<ResponseSimpleData.Bool>> response =
+                restTemplate.exchange(
+                        RequestEntity
+                                .method(props.getBatchDelete().toHttpMethod(), uriComponentsBuilder.build().encode().toUri())
+                                .header(XCacheConstants.HTTP_HEADER_FOR_CACHE_STORE, identifier.getStore())
+                                .header(XCacheConstants.HTTP_HEADER_FOR_CACHE_CUSTOMER, identifier.getConsumer())
+                                .body(query),
+                        new ResponseDataTypeReference<>(ResponseSimpleData.Bool.class)
+                );
+        if (response.getStatusCode().equals(HttpStatus.OK)) {
+            ResponseVo<ResponseSimpleData.Bool> body = response.getBody();
+            if (Objects.nonNull(body)) {
+
+                return body.getData();
+            }
+        }
+
+        return null;
+    }
+
+    public ConsumerOpDto.Batch<T> list(ConsumerOpBatchQueryDto query) {
         UriComponentsBuilder uriComponentsBuilder = props.getList().toBuilder();
         ResponseEntity<ResponseVo<ConsumerOpDto.Batch<T>>> response =
                 restTemplate.exchange(
@@ -159,7 +181,7 @@ public class ConsumerCacheRestService<T extends CacheDto> {
                                 .method(props.getList().toHttpMethod(), uriComponentsBuilder.build().encode().toUri())
                                 .header(XCacheConstants.HTTP_HEADER_FOR_CACHE_STORE, identifier.getStore())
                                 .header(XCacheConstants.HTTP_HEADER_FOR_CACHE_CUSTOMER, identifier.getConsumer())
-                                .body(operation),
+                                .body(query),
                         new ResponseDataTypeReference<>(ConsumerOpDto.Batch.class, storeClassName)
 
                 );
