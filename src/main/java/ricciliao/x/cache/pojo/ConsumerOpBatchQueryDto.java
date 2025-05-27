@@ -1,16 +1,15 @@
 package ricciliao.x.cache.pojo;
 
 import ricciliao.x.cache.CacheQuery;
-import ricciliao.x.component.rest.RestQueryParam;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.EnumMap;
 import java.util.Map;
 
-public class ConsumerOpBatchQueryDto implements RestQueryParam {
+public class ConsumerOpBatchQueryDto implements Serializable {
     @Serial
-    private static final long serialVersionUID = -8084916424068282111L;
+    private static final long serialVersionUID = 5688991327120122635L;
 
     private Long limit;
     private CacheQuery.Property sortBy;
@@ -48,4 +47,5 @@ public class ConsumerOpBatchQueryDto implements RestQueryParam {
     public void setCriteriaMap(Map<CacheQuery.Property, Serializable> criteriaMap) {
         this.criteriaMap = criteriaMap;
     }
+
 }
