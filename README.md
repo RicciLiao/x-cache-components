@@ -6,11 +6,11 @@
 
 Please refer to `dependencies-control-center` for the version number.
 
-| groupId                    | artifactId        | scope    | optional |
-|----------------------------|-------------------|----------|----------|
-| org.springframework        | spring-web        | provider | false    |
-| com.fasterxml.jackson.core | jackson-databind  | provider | false    |
-| ricciliao.x                | common-components | provider | false    |
+| groupId                    | artifactId        | scope    | 
+|----------------------------|-------------------|----------|
+| org.springframework        | spring-web        | provider | 
+| com.fasterxml.jackson.core | jackson-databind  | provider | 
+| ricciliao.x                | common-components | compile  | 
 
 ### Artifacts Output (org.apache.maven.plugins:maven-assembly-plugin)
 
