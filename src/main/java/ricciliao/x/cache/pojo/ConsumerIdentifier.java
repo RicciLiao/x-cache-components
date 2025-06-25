@@ -4,20 +4,18 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class ConsumerIdentifierDto implements Serializable {
+public class ConsumerIdentifier implements Serializable {
     @Serial
     private static final long serialVersionUID = -6723685925978483107L;
+    private String consumer;
+    private String store;
 
-    public ConsumerIdentifierDto(String consumer, String store) {
+    public ConsumerIdentifier(String consumer, String store) {
         this.consumer = consumer;
         this.store = store;
     }
-
-    public ConsumerIdentifierDto() {
+    public ConsumerIdentifier() {
     }
-
-    private String consumer;
-    private String store;
 
     public String getConsumer() {
         return consumer;
@@ -48,7 +46,7 @@ public class ConsumerIdentifierDto implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ConsumerIdentifierDto that)) return false;
+        if (!(o instanceof ConsumerIdentifier that)) return false;
         return Objects.equals(getConsumer(), that.getConsumer()) && Objects.equals(getStore(), that.getStore());
     }
 

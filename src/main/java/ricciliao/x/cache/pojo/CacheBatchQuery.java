@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.EnumMap;
 import java.util.Map;
 
-public class ConsumerOpBatchQueryDto implements Serializable {
+public class CacheBatchQuery implements Serializable {
     @Serial
     private static final long serialVersionUID = 5688991327120122635L;
 

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class ConsumerOpDto implements Serializable, ResponseData {
+public class ConsumerOp implements Serializable, ResponseData {
     @Serial
     private static final long serialVersionUID = 4101945702683481033L;
 
@@ -35,7 +35,7 @@ public class ConsumerOpDto implements Serializable, ResponseData {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ConsumerOpDto that)) return false;
+        if (!(o instanceof ConsumerOp that)) return false;
         return Objects.equals(getId(), that.getId()) && Objects.equals(getTtlOfMillis(), that.getTtlOfMillis());
     }
 
@@ -44,9 +44,11 @@ public class ConsumerOpDto implements Serializable, ResponseData {
         return Objects.hash(getId(), getTtlOfMillis());
     }
 
-    public static class Batch<T extends CacheDto> extends ConsumerOpDto {
+    public static class Batch<T extends CacheDto> extends ConsumerOp {
         @Serial
         private static final long serialVersionUID = -3756043554516531820L;
+        @ConsumerData
+        private List<T> data = new ArrayList<>();
 
         public Batch() {
             super();
@@ -62,9 +64,6 @@ public class ConsumerOpDto implements Serializable, ResponseData {
             this.setTtlOfMillis(ttlOfMillis);
             this.data = data;
         }
-
-        @ConsumerData
-        private List<T> data = new ArrayList<>();
 
         public List<T> getData() {
             return data;
@@ -89,9 +88,11 @@ public class ConsumerOpDto implements Serializable, ResponseData {
 
     }
 
-    public static class Single<T extends CacheDto> extends ConsumerOpDto {
+    public static class Single<T extends CacheDto> extends ConsumerOp {
         @Serial
         private static final long serialVersionUID = -1531312546295535024L;
+        @ConsumerData
+        private T data;
 
         public Single() {
             super();
@@ -107,9 +108,6 @@ public class ConsumerOpDto implements Serializable, ResponseData {
             this.setTtlOfMillis(ttlOfMillis);
             this.data = data;
         }
-
-        @ConsumerData
-        private T data;
 
         public T getData() {
             return data;

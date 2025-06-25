@@ -9,11 +9,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
+import ricciliao.x.cache.pojo.CacheBatchQuery;
 import ricciliao.x.cache.pojo.CacheDto;
-import ricciliao.x.cache.pojo.ConsumerIdentifierDto;
-import ricciliao.x.cache.pojo.ConsumerOpBatchQueryDto;
-import ricciliao.x.cache.pojo.ConsumerOpDto;
-import ricciliao.x.cache.pojo.ProviderInfoDto;
+import ricciliao.x.cache.pojo.ConsumerIdentifier;
+import ricciliao.x.cache.pojo.ConsumerOp;
+import ricciliao.x.cache.pojo.ProviderInfo;
 import ricciliao.x.component.response.ResponseData;
 import ricciliao.x.component.response.ResponseSimpleData;
 import ricciliao.x.component.response.ResponseVo;
@@ -24,8 +24,12 @@ import java.util.Objects;
 
 public class ConsumerCacheRestService<T extends CacheDto> {
 
+    protected final RestTemplate restTemplate;
+    protected final ConsumerCacheProperties.OperationProperties props;
+    protected final ConsumerIdentifier identifier;
+    protected final Class<T> storeClassName;
     public ConsumerCacheRestService(ConsumerCacheProperties.OperationProperties props,
-                                    ConsumerIdentifierDto identifier,
+                                    ConsumerIdentifier identifier,
                                     RestTemplate restTemplate,
                                     Class<T> storeClassName) {
         this.props = props;
@@ -34,12 +38,7 @@ public class ConsumerCacheRestService<T extends CacheDto> {
         this.storeClassName = storeClassName;
     }
 
-    protected final RestTemplate restTemplate;
-    protected final ConsumerCacheProperties.OperationProperties props;
-    protected final ConsumerIdentifierDto identifier;
-    protected final Class<T> storeClassName;
-
-    public ResponseSimpleData.Str create(ConsumerOpDto.Single<T> operation) throws RestClientException {
+    public ResponseSimpleData.Str create(ConsumerOp.Single<T> operation) throws RestClientException {
         UriComponentsBuilder uriComponentsBuilder = props.getCreate().toBuilder();
         ResponseEntity<ResponseVo<ResponseSimpleData.Str>> response =
                 restTemplate.exchange(
@@ -61,7 +60,7 @@ public class ConsumerCacheRestService<T extends CacheDto> {
         return null;
     }
 
-    public ResponseSimpleData.Bool update(ConsumerOpDto.Single<T> operation) throws RestClientException {
+    public ResponseSimpleData.Bool update(ConsumerOp.Single<T> operation) throws RestClientException {
         UriComponentsBuilder uriComponentsBuilder = props.getUpdate().toBuilder();
         ResponseEntity<ResponseVo<ResponseSimpleData.Bool>> response =
                 restTemplate.exchange(
@@ -106,20 +105,20 @@ public class ConsumerCacheRestService<T extends CacheDto> {
         return null;
     }
 
-    public ConsumerOpDto.Single<T> get(String id) throws RestClientException {
+    public ConsumerOp.Single<T> get(String id) throws RestClientException {
         UriComponentsBuilder uriComponentsBuilder = props.getGet().toBuilder();
         uriComponentsBuilder.uriVariables(Map.of("id", id));
-        ResponseEntity<ResponseVo<ConsumerOpDto.Single<T>>> response =
+        ResponseEntity<ResponseVo<ConsumerOp.Single<T>>> response =
                 restTemplate.exchange(
                         RequestEntity
                                 .method(props.getGet().toHttpMethod(), uriComponentsBuilder.build().encode().toUri())
                                 .header(XCacheConstants.HTTP_HEADER_FOR_CACHE_STORE, identifier.getStore())
                                 .header(XCacheConstants.HTTP_HEADER_FOR_CACHE_CUSTOMER, identifier.getConsumer())
                                 .build(),
-                        new ResponseDataTypeReference<>(ConsumerOpDto.Single.class, storeClassName)
+                        new ResponseDataTypeReference<>(ConsumerOp.Single.class, storeClassName)
                 );
         if (response.getStatusCode().equals(HttpStatus.OK)) {
-            ResponseVo<ConsumerOpDto.Single<T>> body = response.getBody();
+            ResponseVo<ConsumerOp.Single<T>> body = response.getBody();
             if (Objects.nonNull(body)) {
 
                 return body.getData();
@@ -129,7 +128,7 @@ public class ConsumerCacheRestService<T extends CacheDto> {
         return null;
     }
 
-    public ResponseSimpleData.Bool batchCreate(ConsumerOpDto.Batch<T> operation) throws RestClientException {
+    public ResponseSimpleData.Bool batchCreate(ConsumerOp.Batch<T> operation) throws RestClientException {
         UriComponentsBuilder uriComponentsBuilder = props.getBatchCreate().toBuilder();
         ResponseEntity<ResponseVo<ResponseSimpleData.Bool>> response =
                 restTemplate.exchange(
@@ -151,7 +150,7 @@ public class ConsumerCacheRestService<T extends CacheDto> {
         return null;
     }
 
-    public ResponseSimpleData.Bool batchDelete(ConsumerOpBatchQueryDto query) throws RestClientException {
+    public ResponseSimpleData.Bool batchDelete(CacheBatchQuery query) throws RestClientException {
         UriComponentsBuilder uriComponentsBuilder = props.getBatchDelete().toBuilder();
         ResponseEntity<ResponseVo<ResponseSimpleData.Bool>> response =
                 restTemplate.exchange(
@@ -173,20 +172,20 @@ public class ConsumerCacheRestService<T extends CacheDto> {
         return null;
     }
 
-    public ConsumerOpDto.Batch<T> list(ConsumerOpBatchQueryDto query) {
+    public ConsumerOp.Batch<T> list(CacheBatchQuery query) {
         UriComponentsBuilder uriComponentsBuilder = props.getList().toBuilder();
-        ResponseEntity<ResponseVo<ConsumerOpDto.Batch<T>>> response =
+        ResponseEntity<ResponseVo<ConsumerOp.Batch<T>>> response =
                 restTemplate.exchange(
                         RequestEntity
                                 .method(props.getList().toHttpMethod(), uriComponentsBuilder.build().encode().toUri())
                                 .header(XCacheConstants.HTTP_HEADER_FOR_CACHE_STORE, identifier.getStore())
                                 .header(XCacheConstants.HTTP_HEADER_FOR_CACHE_CUSTOMER, identifier.getConsumer())
                                 .body(query),
-                        new ResponseDataTypeReference<>(ConsumerOpDto.Batch.class, storeClassName)
+                        new ResponseDataTypeReference<>(ConsumerOp.Batch.class, storeClassName)
 
                 );
         if (response.getStatusCode().equals(HttpStatus.OK)) {
-            ResponseVo<ConsumerOpDto.Batch<T>> body = response.getBody();
+            ResponseVo<ConsumerOp.Batch<T>> body = response.getBody();
             if (Objects.nonNull(body)) {
 
                 return body.getData();
@@ -196,19 +195,19 @@ public class ConsumerCacheRestService<T extends CacheDto> {
         return null;
     }
 
-    public ProviderInfoDto providerInfo() throws RestClientException {
+    public ProviderInfo providerInfo() throws RestClientException {
         UriComponentsBuilder uriComponentsBuilder = props.getProviderInfo().toBuilder();
-        ResponseEntity<ResponseVo<ProviderInfoDto>> response =
+        ResponseEntity<ResponseVo<ProviderInfo>> response =
                 restTemplate.exchange(
                         RequestEntity
                                 .method(props.getProviderInfo().toHttpMethod(), uriComponentsBuilder.build().encode().toUri())
                                 .header(XCacheConstants.HTTP_HEADER_FOR_CACHE_STORE, identifier.getStore())
                                 .header(XCacheConstants.HTTP_HEADER_FOR_CACHE_CUSTOMER, identifier.getConsumer())
                                 .build(),
-                        new ResponseDataTypeReference<>(ProviderInfoDto.class)
+                        new ResponseDataTypeReference<>(ProviderInfo.class)
                 );
         if (response.getStatusCode().equals(HttpStatus.OK)) {
-            ResponseVo<ProviderInfoDto> body = response.getBody();
+            ResponseVo<ProviderInfo> body = response.getBody();
             if (Objects.nonNull(body)) {
 
                 return body.getData();
@@ -220,11 +219,11 @@ public class ConsumerCacheRestService<T extends CacheDto> {
 
     public static class ResponseDataTypeReference<T extends ResponseData> extends ParameterizedTypeReference<ResponseVo<T>> {
 
-        private final Class<? extends ConsumerOpDto> opClass;
+        private final Class<? extends ConsumerOp> opClass;
         private final Class<? extends CacheDto> cacheClass;
         private final Class<? extends ResponseData> responseClass;
 
-        public ResponseDataTypeReference(Class<? extends ConsumerOpDto> opClass,
+        public ResponseDataTypeReference(Class<? extends ConsumerOp> opClass,
                                          Class<? extends CacheDto> cacheClass) {
             super();
             this.opClass = opClass;

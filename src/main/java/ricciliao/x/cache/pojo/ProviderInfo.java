@@ -6,23 +6,20 @@ import java.io.Serial;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class ProviderInfoDto implements ResponseData {
+public class ProviderInfo implements ResponseData {
     @Serial
     private static final long serialVersionUID = -3013557418500676494L;
-
-    public ProviderInfoDto() {
-        //default constructor
-    }
-
-    public ProviderInfoDto(ConsumerIdentifierDto consumerIdentifier) {
-        this.consumerIdentifier = consumerIdentifier;
-        this.count = 0L;
-    }
-
     private Long count;
     private LocalDateTime createdDtm;
     private LocalDateTime maxUpdatedDtm;
-    private ConsumerIdentifierDto consumerIdentifier;
+    private ConsumerIdentifier consumerIdentifier;
+    public ProviderInfo() {
+        //default constructor
+    }
+    public ProviderInfo(ConsumerIdentifier consumerIdentifier) {
+        this.consumerIdentifier = consumerIdentifier;
+        this.count = 0L;
+    }
 
     public Long getCount() {
         return count;
@@ -48,18 +45,18 @@ public class ProviderInfoDto implements ResponseData {
         this.maxUpdatedDtm = maxUpdatedDtm;
     }
 
-    public ConsumerIdentifierDto getConsumerIdentifier() {
+    public ConsumerIdentifier getConsumerIdentifier() {
         return consumerIdentifier;
     }
 
-    public void setConsumerIdentifier(ConsumerIdentifierDto consumerIdentifier) {
+    public void setConsumerIdentifier(ConsumerIdentifier consumerIdentifier) {
         this.consumerIdentifier = consumerIdentifier;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ProviderInfoDto that)) return false;
+        if (!(o instanceof ProviderInfo that)) return false;
         return Objects.equals(getCount(), that.getCount()) && Objects.equals(getCreatedDtm(), that.getCreatedDtm()) && Objects.equals(getMaxUpdatedDtm(), that.getMaxUpdatedDtm()) && Objects.equals(getConsumerIdentifier(), that.getConsumerIdentifier());
     }
 

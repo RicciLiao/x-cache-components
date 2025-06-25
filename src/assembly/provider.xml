@@ -1,5 +1,5 @@
-<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.2.0"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<assembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://maven.apache.org/ASSEMBLY/2.2.0"
           xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.2.0 https://maven.apache.org/xsd/assembly-2.2.0.xsd">
     <id>provider</id>
     <formats>
@@ -13,7 +13,7 @@
                 <include>ricciliao/x/cache/CacheKey.class</include>
                 <include>ricciliao/x/cache/XCacheConstants.class</include>
                 <include>ricciliao/x/cache/ConsumerData.class</include>
-                <include>ricciliao/x/cache/ConsumerIdentifier.class</include>
+                <include>ricciliao/x/cache/ConsumerId.class</include>
                 <include>ricciliao/x/cache/CacheQuery.class</include>
                 <include>ricciliao/x/cache/CacheQuery$Property.class</include>
                 <include>ricciliao/x/cache/CacheQuery$Sort.class</include>
@@ -25,7 +25,6 @@
                 <include>ricciliao/x/cache/ProviderCacheProperties$ConsumerProperties.class</include>
 
                 <include>ricciliao/x/cache/pojo/*.class</include>
-                <include>ricciliao/x/cache/pojo/bsm/*.class</include>
                 <include>ricciliao/x/cache/pojo/message/*.class</include>
             </includes>
             <outputDirectory>/</outputDirectory>

@@ -1,5 +1,5 @@
-<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.2.0"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<assembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://maven.apache.org/ASSEMBLY/2.2.0"
           xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.2.0 https://maven.apache.org/xsd/assembly-2.2.0.xsd">
     <id>common</id>
     <formats>
@@ -12,7 +12,6 @@
             <includes>
                 <include>ricciliao/x/cache/CacheKey.class</include>
                 <include>ricciliao/x/cache/ConsumerData.class</include>
-                <include>ricciliao/x/cache/ConsumerIdentifier.class</include>
                 <include>ricciliao/x/cache/XCacheConstants.class</include>
                 <include>ricciliao/x/cache/CacheQuery.class</include>
                 <include>ricciliao/x/cache/CacheQuery$Property.class</include>
@@ -31,12 +30,13 @@
                 </include>
 
                 <include>ricciliao/x/cache/pojo/CacheDto.class</include>
-                <include>ricciliao/x/cache/pojo/ConsumerOpBatchQueryDto.class</include>
-                <include>ricciliao/x/cache/pojo/ConsumerIdentifierDto.class</include>
-                <include>ricciliao/x/cache/pojo/ConsumerOpDto.class</include>
-                <include>ricciliao/x/cache/pojo/ConsumerOpDto$Batch.class</include>
-                <include>ricciliao/x/cache/pojo/ConsumerOpDto$Single.class</include>
-                <include>ricciliao/x/cache/pojo/ProviderInfoDto.class</include>
+                <include>ricciliao/x/cache/pojo/CacheBatchQuery.class</include>
+                <include>ricciliao/x/cache/pojo/ConsumerIdentifier.class</include>
+                <include>ricciliao/x/cache/pojo/ConsumerOp.class</include>
+                <include>ricciliao/x/cache/pojo/ConsumerOp$Batch.class</include>
+                <include>ricciliao/x/cache/pojo/ConsumerOp$Single.class</include>
+                <include>ricciliao/x/cache/pojo/ProviderInfo.class</include>
+                <include>ricciliao/x/cache/pojo/common/ChallengeCacheDto.class</include>
             </includes>
             <outputDirectory>/</outputDirectory>
         </fileSet>

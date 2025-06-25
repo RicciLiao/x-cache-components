@@ -85,7 +85,6 @@
                             <descriptors>
                                 <descriptor>src/assembly/consumer/common.xml</descriptor>
                                 <descriptor>src/assembly/consumer/message.xml</descriptor>
-                                <descriptor>src/assembly/consumer/bsm.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
