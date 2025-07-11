@@ -16,8 +16,10 @@
     <description>Cache Consumer Components</description>
 
     <properties>
-        <assembly-consumer-jar.finalName>cache-consumer-${project.version}</assembly-consumer-jar.finalName>
-        <assembly-provider-jar.finalName>cache-provider-${project.version}</assembly-provider-jar.finalName>
+        <assembly-common-component-jar.finalName>cache-common-component-${project.version}
+        </assembly-common-component-jar.finalName>
+        <assembly-consumer-component-jar.finalName>cache-consumer-component-${project.version}
+        </assembly-consumer-component-jar.finalName>
     </properties>
 
     <dependencies>
@@ -75,29 +77,28 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <executions>
                     <execution>
+                        <id>common-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <finalName>${assembly-common-component-jar.finalName}</finalName>
+                            <descriptors>
+                                <descriptor>src/assembly/common.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
                         <id>consumer-assembly</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <finalName>${assembly-consumer-jar.finalName}</finalName>
+                            <finalName>${assembly-consumer-component-jar.finalName}</finalName>
                             <descriptors>
-                                <descriptor>src/assembly/consumer/common.xml</descriptor>
-                                <descriptor>src/assembly/consumer/message.xml</descriptor>
-                            </descriptors>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>provider-assembly</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                        <configuration>
-                            <finalName>${assembly-provider-jar.finalName}</finalName>
-                            <descriptors>
-                                <descriptor>src/assembly/provider.xml</descriptor>
+                                <descriptor>src/assembly/consumer.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>

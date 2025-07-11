@@ -1,34 +1,29 @@
 package ricciliao.x.cache.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import ricciliao.x.cache.CacheKey;
-import ricciliao.x.cache.CacheQuery;
-import ricciliao.x.component.response.ResponseData;
-import ricciliao.x.component.serialisation.LocalDateTime2TimestampSerializer;
-import ricciliao.x.component.serialisation.Timestamp2LocalDateTimeDeserializer;
+import ricciliao.x.cache.annotation.CacheData;
+import ricciliao.x.cache.annotation.CacheId;
+import ricciliao.x.cache.query.CacheQuery;
 
 import java.io.Serial;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public abstract class CacheDto implements ResponseData {
+public class CacheStore<T extends Serializable> implements Serializable {
     @Serial
-    private static final long serialVersionUID = -5939196155346350122L;
+    private static final long serialVersionUID = -7838083516165280621L;
 
     @CacheQuery.Support(CacheQuery.Property.CACHE_KEY)
-    @CacheKey
+    @CacheId
     private String cacheKey;
     @CacheQuery.Support(CacheQuery.Property.CREATED_DTM)
-    @JsonSerialize(using = LocalDateTime2TimestampSerializer.class)
-    @JsonDeserialize(using = Timestamp2LocalDateTimeDeserializer.class)
     private LocalDateTime createdDtm;
     @CacheQuery.Support(CacheQuery.Property.UPDATED_DTM)
-    @JsonSerialize(using = LocalDateTime2TimestampSerializer.class)
-    @JsonDeserialize(using = Timestamp2LocalDateTimeDeserializer.class)
     private LocalDateTime updatedDtm;
     @JsonIgnore
     private LocalDateTime effectedDtm;
+    @CacheData
+    private T data;
 
     public String getCacheKey() {
         return cacheKey;
@@ -62,6 +57,11 @@ public abstract class CacheDto implements ResponseData {
         this.effectedDtm = effectedDtm;
     }
 
-    public abstract CacheDto generateCacheKey();
+    public T getData() {
+        return data;
+    }
 
+    public void setData(T data) {
+        this.data = data;
+    }
 }

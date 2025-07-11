@@ -1,6 +1,4 @@
-package ricciliao.x.cache.pojo;
-
-import ricciliao.x.cache.CacheQuery;
+package ricciliao.x.cache.query;
 
 import java.io.Serial;
 import java.io.Serializable;

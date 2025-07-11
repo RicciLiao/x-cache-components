@@ -1,0 +1,26 @@
+<assembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://maven.apache.org/ASSEMBLY/2.2.0"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.2.0 https://maven.apache.org/xsd/assembly-2.2.0.xsd">
+    <id>common</id>
+    <formats>
+        <format>jar</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <fileSets>
+        <fileSet>
+            <directory>${project.build.outputDirectory}</directory>
+            <includes>
+                <include>ricciliao/x/cache/XCacheConstants.class</include>
+                <include>ricciliao/x/cache/annotation/*.class</include>
+                <include>ricciliao/x/cache/pojo/CacheOperation.class</include>
+                <include>ricciliao/x/cache/pojo/CacheStore.class</include>
+                <include>ricciliao/x/cache/pojo/ConsumerIdentifier.class</include>
+                <include>ricciliao/x/cache/pojo/ProviderInfo.class</include>
+                <include>ricciliao/x/cache/query/*.class</include>
+                <include>ricciliao/x/cache/XCacheConstants.class</include>
+                <include>ricciliao/x/cache/CacheOperationUtils.class</include>
+            </includes>
+            <outputDirectory>/</outputDirectory>
+        </fileSet>
+    </fileSets>
+</assembly>

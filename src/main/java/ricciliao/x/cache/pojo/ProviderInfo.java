@@ -14,7 +14,6 @@ public class ProviderInfo implements ResponseData {
     private LocalDateTime maxUpdatedDtm;
     private ConsumerIdentifier consumerIdentifier;
     public ProviderInfo() {
-        //default constructor
     }
     public ProviderInfo(ConsumerIdentifier consumerIdentifier) {
         this.consumerIdentifier = consumerIdentifier;

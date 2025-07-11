@@ -1,134 +1,72 @@
 package ricciliao.x.cache.pojo;
 
-import ricciliao.x.cache.ConsumerData;
-import ricciliao.x.component.response.ResponseData;
+import ricciliao.x.cache.ConsumerCacheData;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.Arrays;
+import java.util.function.IntFunction;
 
-public class ConsumerOp implements Serializable, ResponseData {
+public class ConsumerOp<T extends Serializable> extends CacheOperation<T> {
     @Serial
-    private static final long serialVersionUID = 4101945702683481033L;
+    private static final long serialVersionUID = -3697115362452176598L;
 
-    private String id;
-    private Long ttlOfMillis;
-
-    public String getId() {
-        return id;
+    public ConsumerOp() {
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public ConsumerOp(T data) {
+        super(data);
     }
 
-    public Long getTtlOfMillis() {
-        return ttlOfMillis;
+    public ConsumerOp(Long ttlOfSeconds, T data) {
+        super(ttlOfSeconds, data);
     }
 
-    public void setTtlOfMillis(Long ttlOfMillis) {
-        this.ttlOfMillis = ttlOfMillis;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ConsumerOp that)) return false;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getTtlOfMillis(), that.getTtlOfMillis());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getTtlOfMillis());
-    }
-
-    public static class Batch<T extends CacheDto> extends ConsumerOp {
+    public static class Single<T extends ConsumerCacheData> extends ConsumerOp<ConsumerCacheStore<T>> {
         @Serial
-        private static final long serialVersionUID = -3756043554516531820L;
-        @ConsumerData
-        private List<T> data = new ArrayList<>();
-
-        public Batch() {
-            super();
-        }
-
-        public Batch(List<T> data) {
-            super();
-            this.data = data;
-        }
-
-        public Batch(List<T> data, Long ttlOfMillis) {
-            super();
-            this.setTtlOfMillis(ttlOfMillis);
-            this.data = data;
-        }
-
-        public List<T> getData() {
-            return data;
-        }
-
-        public void setData(List<T> data) {
-            this.data = data;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof Batch<?> batch)) return false;
-            if (!super.equals(o)) return false;
-            return Objects.equals(getData(), batch.getData());
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(super.hashCode(), getData());
-        }
-
-    }
-
-    public static class Single<T extends CacheDto> extends ConsumerOp {
-        @Serial
-        private static final long serialVersionUID = -1531312546295535024L;
-        @ConsumerData
-        private T data;
+        private static final long serialVersionUID = -4198488521122910649L;
 
         public Single() {
             super();
         }
 
         public Single(T data) {
-            super();
-            this.data = data;
+            super(new ConsumerCacheStore<>(data));
         }
 
-        public Single(T data, Long ttlOfMillis) {
-            super();
-            this.setTtlOfMillis(ttlOfMillis);
-            this.data = data;
+        public Single(ConsumerCacheStore<T> data) {
+            super(data);
         }
 
-        public T getData() {
-            return data;
+        public Single(Long ttlOfSeconds, ConsumerCacheStore<T> data) {
+            super(ttlOfSeconds, data);
         }
-
-        public void setData(T data) {
-            this.data = data;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof Single<?> single)) return false;
-            if (!super.equals(o)) return false;
-            return Objects.equals(getData(), single.getData());
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(super.hashCode(), getData());
-        }
-
     }
+
+    public static class Batch<T extends ConsumerCacheData> extends ConsumerOp<ConsumerCacheStore<T>[]> {
+        @Serial
+        private static final long serialVersionUID = -4198488521122910649L;
+
+        public Batch() {
+            super();
+        }
+
+        public Batch(T[] data) {
+            super();
+            this.setData(
+                    Arrays.stream(data)
+                            .map(ConsumerCacheStore::new)
+                            .toArray((IntFunction<ConsumerCacheStore<T>[]>) ConsumerCacheStore[]::new)
+            );
+        }
+
+        public Batch(ConsumerCacheStore<T>[] data) {
+            super(data);
+        }
+
+        public Batch(Long ttlOfSeconds, ConsumerCacheStore<T>[] data) {
+            super(ttlOfSeconds, data);
+        }
+    }
+
 }

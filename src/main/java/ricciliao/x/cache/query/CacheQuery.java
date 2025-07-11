@@ -1,4 +1,4 @@
-package ricciliao.x.cache;
+package ricciliao.x.cache.query;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -17,6 +17,12 @@ public class CacheQuery {
 
     }
 
+    @Target({ElementType.FIELD})
+    @Retention(RetentionPolicy.RUNTIME)
+    public @interface Support {
+        Property value();
+    }
+
     public static class Sort {
 
         public enum Direction {
@@ -24,12 +30,6 @@ public class CacheQuery {
             DESC
         }
 
-    }
-
-    @Target({ElementType.FIELD})
-    @Retention(RetentionPolicy.RUNTIME)
-    public @interface Support {
-        Property value();
     }
 
 }

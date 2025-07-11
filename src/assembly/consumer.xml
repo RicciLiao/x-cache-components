@@ -1,0 +1,23 @@
+<assembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://maven.apache.org/ASSEMBLY/2.2.0"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.2.0 https://maven.apache.org/xsd/assembly-2.2.0.xsd">
+    <id>consumer</id>
+    <formats>
+        <format>jar</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <fileSets>
+        <fileSet>
+            <directory>${project.build.outputDirectory}</directory>
+            <includes>
+                <include>ricciliao/x/cache/ConsumerCacheRestService.class</include>
+                <include>ricciliao/x/cache/ConsumerCacheData.class</include>
+                <include>ricciliao/x/cache/pojo/ConsumerCacheStore.class</include>
+                <include>ricciliao/x/cache/pojo/ConsumerOp.class</include>
+                <include>ricciliao/x/cache/pojo/ConsumerOp$Single.class</include>
+                <include>ricciliao/x/cache/pojo/ConsumerOp$Batch.class</include>
+            </includes>
+            <outputDirectory>/</outputDirectory>
+        </fileSet>
+    </fileSets>
+</assembly>

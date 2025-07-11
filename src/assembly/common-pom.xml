@@ -9,22 +9,18 @@
     </parent>
 
     <groupId>ricciliao.x</groupId>
-    <artifactId>cache-provider</artifactId>
+    <artifactId>cache-common-component</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>cache-provider</name>
-    <description>Components of ricci-cache-provider</description>
+    <name>cache-consumer-common</name>
+    <description>Cache Common Component</description>
 
     <properties>
 
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>ricciliao.x</groupId>
-            <artifactId>common-components</artifactId>
-            <scope>compile</scope>
-        </dependency>
+
     </dependencies>
 
 </project>
