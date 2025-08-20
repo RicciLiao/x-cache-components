@@ -2,7 +2,7 @@ package ricciliao.x.cache.pojo;
 
 
 import ricciliao.x.cache.annotation.CacheData;
-import ricciliao.x.component.response.ResponseData;
+import ricciliao.x.component.response.data.ResponseData;
 
 import java.io.Serial;
 import java.io.Serializable;

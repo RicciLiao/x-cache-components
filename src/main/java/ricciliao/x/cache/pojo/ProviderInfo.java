@@ -1,6 +1,7 @@
 package ricciliao.x.cache.pojo;
 
-import ricciliao.x.component.response.ResponseData;
+
+import ricciliao.x.component.response.data.ResponseData;
 
 import java.io.Serial;
 import java.time.LocalDateTime;
@@ -13,8 +14,10 @@ public class ProviderInfo implements ResponseData {
     private LocalDateTime createdDtm;
     private LocalDateTime maxUpdatedDtm;
     private ConsumerIdentifier consumerIdentifier;
+
     public ProviderInfo() {
     }
+
     public ProviderInfo(ConsumerIdentifier consumerIdentifier) {
         this.consumerIdentifier = consumerIdentifier;
         this.count = 0L;
