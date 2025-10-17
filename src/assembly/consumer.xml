@@ -13,9 +13,7 @@
                 <include>ricciliao/x/cache/ConsumerCacheRestService.class</include>
                 <include>ricciliao/x/cache/ConsumerCacheData.class</include>
                 <include>ricciliao/x/cache/pojo/ConsumerCacheStore.class</include>
-                <include>ricciliao/x/cache/pojo/ConsumerOp.class</include>
-                <include>ricciliao/x/cache/pojo/ConsumerOp$Single.class</include>
-                <include>ricciliao/x/cache/pojo/ConsumerOp$Batch.class</include>
+                <include>ricciliao/x/cache/pojo/ConsumerCacheStore$Batch.class</include>
             </includes>
             <outputDirectory>/</outputDirectory>
         </fileSet>
