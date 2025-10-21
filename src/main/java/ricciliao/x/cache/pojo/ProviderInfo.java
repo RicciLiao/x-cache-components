@@ -4,15 +4,15 @@ package ricciliao.x.cache.pojo;
 import ricciliao.x.component.response.data.ResponseData;
 
 import java.io.Serial;
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class ProviderInfo implements ResponseData {
     @Serial
     private static final long serialVersionUID = -3013557418500676494L;
     private Long count;
-    private Instant createdDtm;
-    private Instant maxUpdatedDtm;
+    private LocalDateTime createdDtm;
+    private LocalDateTime maxUpdatedDtm;
     private ConsumerIdentifier consumerIdentifier;
 
     public ProviderInfo() {
@@ -31,19 +31,19 @@ public class ProviderInfo implements ResponseData {
         this.count = count;
     }
 
-    public Instant getCreatedDtm() {
+    public LocalDateTime getCreatedDtm() {
         return createdDtm;
     }
 
-    public void setCreatedDtm(Instant createdDtm) {
+    public void setCreatedDtm(LocalDateTime createdDtm) {
         this.createdDtm = createdDtm;
     }
 
-    public Instant getMaxUpdatedDtm() {
+    public LocalDateTime getMaxUpdatedDtm() {
         return maxUpdatedDtm;
     }
 
-    public void setMaxUpdatedDtm(Instant maxUpdatedDtm) {
+    public void setMaxUpdatedDtm(LocalDateTime maxUpdatedDtm) {
         this.maxUpdatedDtm = maxUpdatedDtm;
     }
 

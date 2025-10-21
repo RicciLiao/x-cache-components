@@ -1,13 +1,13 @@
 package ricciliao.x.cache.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import ricciliao.x.cache.annotation.CacheData;
 import ricciliao.x.cache.annotation.CacheId;
 import ricciliao.x.cache.query.CacheQuery;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.time.Instant;
-import java.util.List;
+import java.time.LocalDateTime;
 
 public class CacheStore<T extends Serializable> implements Serializable {
     @Serial
@@ -17,9 +17,11 @@ public class CacheStore<T extends Serializable> implements Serializable {
     @CacheId
     private String cacheKey;
     @CacheQuery.Support(CacheQuery.Property.CREATED_DTM)
-    private Instant createdDtm;
+    private LocalDateTime createdDtm;
     @CacheQuery.Support(CacheQuery.Property.UPDATED_DTM)
-    private Instant updatedDtm;
+    private LocalDateTime updatedDtm;
+    @JsonIgnore
+    private LocalDateTime effectedDtm;
     @CacheData
     private T data;
 
@@ -31,20 +33,28 @@ public class CacheStore<T extends Serializable> implements Serializable {
         this.cacheKey = cacheKey;
     }
 
-    public Instant getCreatedDtm() {
+    public LocalDateTime getCreatedDtm() {
         return createdDtm;
     }
 
-    public void setCreatedDtm(Instant createdDtm) {
+    public void setCreatedDtm(LocalDateTime createdDtm) {
         this.createdDtm = createdDtm;
     }
 
-    public Instant getUpdatedDtm() {
+    public LocalDateTime getUpdatedDtm() {
         return updatedDtm;
     }
 
-    public void setUpdatedDtm(Instant updatedDtm) {
+    public void setUpdatedDtm(LocalDateTime updatedDtm) {
         this.updatedDtm = updatedDtm;
+    }
+
+    public LocalDateTime getEffectedDtm() {
+        return effectedDtm;
+    }
+
+    public void setEffectedDtm(LocalDateTime effectedDtm) {
+        this.effectedDtm = effectedDtm;
     }
 
     public T getData() {
@@ -53,21 +63,5 @@ public class CacheStore<T extends Serializable> implements Serializable {
 
     public void setData(T data) {
         this.data = data;
-    }
-
-
-    public static class Batch<T extends CacheStore<? extends Serializable>> implements Serializable {
-        @Serial
-        private static final long serialVersionUID = 5741410145008457634L;
-        private final List<T> batch;
-
-        public Batch(List<T> batch) {
-            this.batch = batch;
-        }
-
-        public List<T> batch() {
-            return batch;
-        }
-
     }
 }

@@ -12,11 +12,13 @@
             <includes>
                 <include>ricciliao/x/cache/XCacheConstants.class</include>
                 <include>ricciliao/x/cache/annotation/*.class</include>
+                <include>ricciliao/x/cache/pojo/CacheOperation.class</include>
                 <include>ricciliao/x/cache/pojo/CacheStore.class</include>
-                <include>ricciliao/x/cache/pojo/CacheStore$Batch.class</include>
                 <include>ricciliao/x/cache/pojo/ConsumerIdentifier.class</include>
                 <include>ricciliao/x/cache/pojo/ProviderInfo.class</include>
                 <include>ricciliao/x/cache/query/*.class</include>
+                <include>ricciliao/x/cache/XCacheConstants.class</include>
+                <include>ricciliao/x/cache/CacheOperationUtils.class</include>
             </includes>
             <outputDirectory>/</outputDirectory>
         </fileSet>
