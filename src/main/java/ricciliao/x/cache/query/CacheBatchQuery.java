@@ -9,9 +9,9 @@ public class CacheBatchQuery implements Serializable {
     @Serial
     private static final long serialVersionUID = 5688991327120122635L;
 
-    private Long limit;
-    private CacheQuery.Property sortBy;
-    private CacheQuery.Sort.Direction sortDirection;
+    private Long limit = 0L;
+    private CacheQuery.Property sortBy = CacheQuery.Property.CREATED_DTM;
+    private CacheQuery.Sort.Direction sortDirection = CacheQuery.Sort.Direction.ASC;
     private Map<CacheQuery.Property, Serializable> criteriaMap = new EnumMap<>(CacheQuery.Property.class);
 
     public Long getLimit() {
