@@ -3,7 +3,7 @@ package ricciliao.x.cache;
 
 import ricciliao.x.component.response.data.ResponseData;
 
-public interface ConsumerCacheData extends ResponseData {
+public interface ConsumerStore extends ResponseData {
 
     String generateCacheKey();
 
