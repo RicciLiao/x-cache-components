@@ -1,13 +1,13 @@
 package ricciliao.x.cache.pojo;
 
 
-import ricciliao.x.component.response.data.ResponseData;
+import ricciliao.x.component.payload.PayloadData;
 
 import java.io.Serial;
 import java.time.Instant;
 import java.util.Objects;
 
-public class ProviderInfo implements ResponseData {
+public class ProviderInfo implements PayloadData {
     @Serial
     private static final long serialVersionUID = -3013557418500676494L;
     private Long count;

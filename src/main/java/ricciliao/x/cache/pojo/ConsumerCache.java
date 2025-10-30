@@ -8,6 +8,7 @@ import java.io.Serializable;
 public class ConsumerCache<T extends ConsumerStore> extends StoreCache<T> implements Serializable {
     @Serial
     private static final long serialVersionUID = -8920728831428092290L;
+    private Long ttlSec;
 
     public ConsumerCache() {
     }
@@ -22,8 +23,6 @@ public class ConsumerCache<T extends ConsumerStore> extends StoreCache<T> implem
         this.setStore(data);
         this.setTtlSec(ttlSec);
     }
-
-    private Long ttlSec;
 
     public Long getTtlSec() {
         return ttlSec;

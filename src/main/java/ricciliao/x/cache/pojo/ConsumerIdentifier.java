@@ -14,6 +14,7 @@ public class ConsumerIdentifier implements Serializable {
         this.consumer = consumer;
         this.store = store;
     }
+
     public ConsumerIdentifier() {
     }
 

@@ -3,13 +3,13 @@ package ricciliao.x.cache.pojo;
 import ricciliao.x.cache.annotation.CacheId;
 import ricciliao.x.cache.annotation.Store;
 import ricciliao.x.cache.query.CacheQuery;
-import ricciliao.x.component.response.data.ResponseData;
+import ricciliao.x.component.payload.PayloadData;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
 
-public class StoreCache<T extends Serializable> implements ResponseData {
+public class StoreCache<T extends Serializable> implements PayloadData {
     @Serial
     private static final long serialVersionUID = -7838083516165280621L;
 

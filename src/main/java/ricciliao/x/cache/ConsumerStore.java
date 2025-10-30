@@ -1,9 +1,9 @@
 package ricciliao.x.cache;
 
 
-import ricciliao.x.component.response.data.ResponseData;
+import ricciliao.x.component.payload.PayloadData;
 
-public interface ConsumerStore extends ResponseData {
+public interface ConsumerStore extends PayloadData {
 
     String generateCacheKey();
 

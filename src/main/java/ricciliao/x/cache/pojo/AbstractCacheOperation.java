@@ -7,6 +7,7 @@ import java.io.Serializable;
 public abstract class AbstractCacheOperation<T extends Serializable> implements Serializable {
     @Serial
     private static final long serialVersionUID = -809725412591353599L;
+    private T data;
 
     protected AbstractCacheOperation() {
     }
@@ -14,8 +15,6 @@ public abstract class AbstractCacheOperation<T extends Serializable> implements 
     protected AbstractCacheOperation(T data) {
         this.data = data;
     }
-
-    private T data;
 
     public T getData() {
         return data;
