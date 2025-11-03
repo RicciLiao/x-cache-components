@@ -13,12 +13,12 @@ public class ProviderInfo implements PayloadData {
     private Long count;
     private Instant createdDtm;
     private Instant maxUpdatedDtm;
-    private ConsumerIdentifier consumerIdentifier;
+    private StoreIdentifier consumerIdentifier;
 
     public ProviderInfo() {
     }
 
-    public ProviderInfo(ConsumerIdentifier consumerIdentifier) {
+    public ProviderInfo(StoreIdentifier consumerIdentifier) {
         this.consumerIdentifier = consumerIdentifier;
         this.count = 0L;
     }
@@ -47,11 +47,11 @@ public class ProviderInfo implements PayloadData {
         this.maxUpdatedDtm = maxUpdatedDtm;
     }
 
-    public ConsumerIdentifier getConsumerIdentifier() {
+    public StoreIdentifier getConsumerIdentifier() {
         return consumerIdentifier;
     }
 
-    public void setConsumerIdentifier(ConsumerIdentifier consumerIdentifier) {
+    public void setConsumerIdentifier(StoreIdentifier consumerIdentifier) {
         this.consumerIdentifier = consumerIdentifier;
     }
 

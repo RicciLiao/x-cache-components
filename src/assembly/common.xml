@@ -14,7 +14,7 @@
                 <include>ricciliao/x/cache/pojo/AbstractCacheOperation.class</include>
                 <include>ricciliao/x/cache/pojo/AbstractCacheOperation$Single.class</include>
                 <include>ricciliao/x/cache/pojo/AbstractCacheOperation$Batch.class</include>
-                <include>ricciliao/x/cache/pojo/ConsumerIdentifier.class</include>
+                <include>ricciliao/x/cache/pojo/StoreIdentifier.class</include>
                 <include>ricciliao/x/cache/pojo/ProviderInfo.class</include>
                 <include>ricciliao/x/cache/pojo/StoreCache.class</include>
                 <include>ricciliao/x/cache/query/*.class</include>
